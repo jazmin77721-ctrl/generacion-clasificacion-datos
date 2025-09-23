@@ -1,50 +1,84 @@
-Proyecto: Generación y Clasificación de Datos (Entrega 1)
-🎯 Objetivo
+# Proyecto: Generación y Clasificación de Datos
 
-Esta primera parte del proyecto tiene como finalidad generar archivos de prueba que luego serán utilizados para organizar y procesar información de vendedores y productos en entregas posteriores.
+## 🎯 Objetivo
+Este proyecto busca simular un flujo de datos de productos, vendedores y ventas para luego organizar la información y generar reportes.  
+Se desarrolla en **Java 8** siguiendo una estructura modular con paquetes separados por responsabilidades.
 
-No se requiere interacción del usuario, todo se crea de manera automática al ejecutar la clase GenerateInfoFiles.
+---
 
-📂 Archivos generados
+## 📌 Entregas
 
-Al ejecutar el programa se crean los siguientes archivos en la carpeta data/input/:
+### ✅ Entrega 1 (Semana 3)
+- Se implementó la generación automática de archivos de prueba.
+- Archivos generados en `data/input/`:
+  - `products.txt` → Catálogo de productos (`ID;Nombre;Precio`)
+  - `salesmen.txt` → Listado de vendedores (`TipoDoc;NúmeroDoc;Nombres;Apellidos`)
+  - Carpeta `sales/` → Un archivo por vendedor con sus ventas:
+    - Primera línea: identificación del vendedor (`TipoDoc;NúmeroDoc`)
+    - Líneas siguientes: productos vendidos (`IDProducto;CantidadVendida`)
+- Main ejecutado: **`GenerateInfoFiles`**
 
-products.txt
-Contiene un listado de productos con el formato:
+---
 
-IDProducto;NombreProducto;PrecioUnidad
+### ✅ Entrega 2 (Semana 5)
+- Se añadió un **segundo main (`Main`)** que:
+  - Lee los archivos de entrada usando **`FileReaderService`**.
+  - Genera reportes preliminares con **`ReportGenerator`**.
+- Archivos creados en `data/output/`:
+  - `reporte_vendedores.csv` (encabezado: `Vendedor;TotalVentas`)
+  - `reporte_productos.csv` (encabezado: `Producto;CantidadVendida;Precio`)
+- Actualmente los reportes contienen solo encabezados (versión preliminar).
+- Main ejecutado: **`Main`**
 
+---
 
-salesmen.txt
-Contiene la información de los vendedores con el formato:
-
-TipoDocumento;NúmeroDocumento;Nombres;Apellidos
-
-
-Carpeta sales/
-Dentro se crea un archivo por cada vendedor.
-
-Primera línea: tipo y número de documento del vendedor.
-
-Líneas siguientes: ID de producto y cantidad vendida.
-Ejemplo:
-
-CC;10324567
-P1;3
-P5;2
-P10;1
-
+## 📂 Estructura del Proyecto
 
 
 generacion-clasificacion-datos/
- ├── src/
- │   ├── com/proyecto/GenerateInfoFiles.java
- │   └── com/service/DataGenerato.java
- ├── data/
- │   └── input/
- │       ├── products.txt
- │       ├── salesmen.txt
- │       └── sales/
- ├── README.md       <-- aquí va el documento explicativo
+├── src/
+│ └── com/proyecto/
+│ ├── GenerateInfoFiles.java # main 1 (Entrega 1)
+│ ├── Main.java # main 2 (Entrega 2)
+│ └── service/
+│ ├── DataGenerato.java
+│ ├── FileReaderService.java
+│ ├── ReportGenerator.java
+│ ├── Validator.java
+│ └── models/
+│ ├── Producto.java
+│ ├── Vendedor.java
+│ └── Venta.java
+├── data/
+│ ├── input/
+│ │ ├── products.txt
+│ │ ├── salesmen.txt
+│ │ └── sales/
+│ │ ├── CC_XXXXX.txt
+│ │ └── ...
+│ └── output/
+│ ├── reporte_vendedores.csv
+│ └── reporte_productos.csv
+├── docs/
+│ └── faltantes-semana5.md
+└── README.md
 
-# generacion-clasificacion-datos
+
+## 🚀 Ejecución
+
+1. **Generar archivos de prueba**
+   ```bash
+   Ejecutar GenerateInfoFiles (main 1)
+   
+   
+   SALIDA ESPERADA:
+   Archivos de entrada generados en la carpeta data/input
+   Ejecutar Main (main 2)
+   Productos cargados : 20
+Vendedores cargados : 5
+Archivo de ventas leído: CC_12345678.txt (6 líneas)
+...
+Reporte preliminar de vendedores generado en data/output/reporte_vendedores.csv
+Reporte preliminar de productos generado en data/output/reporte_productos.csv
+Reportes generados correctamente en data/output/
+   
