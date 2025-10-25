@@ -1,1 +1,20 @@
-Producto;CantidadVendida;Precio
+Producto;Cantidad Vendida
+Galleta 8;28
+Pan 18;28
+Arepa 15;21
+Croissant 1;19
+Pan 6;19
+Arepa 11;17
+Croissant 12;16
+Torta 13;16
+Galleta 10;15
+Pan 2;14
+Croissant 4;13
+Mogolla 3;12
+Torta 7;12
+Arepa 14;12
+Torta 20;9
+Mogolla 9;8
+Pan 5;7
+Torta 16;6
+Galleta 19;4
